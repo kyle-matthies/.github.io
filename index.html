@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Oso Grande Crossword Puzzle Generator&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #000000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #0057b7;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#intro {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#controls {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#wordInput {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 100px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#crosswordGrid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: grid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 1px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cell {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid #000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cell.highlighted {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffd700;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cell.incorrect {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ff6b6b;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cell.missed {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffa500;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffd700;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #000000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffed80;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media print {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#controls, #wordInput, button:not(#printButton) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Oso Grande Crossword Puzzle Generator&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="intro"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;Welcome to the unofficial Oso Grande Crossword Puzzle Generator. This free tool is designed to help your kids study vocab words. Simply type or paste the words into the open text box below and click generate crossword. You can solve the puzzle on your screen and click the check puzzle button or print the crossword to do it on paper. Click the hint button if you get stuck and a single letter will be highlighted to help you out. The grade drop down adjusts the difficulty of the puzzle.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;Please send any feedback by clicking the button below so I can improve the tool!&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="sendFeedback()"&gt;Send Feedback&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="controls"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;select id="gradeSelect"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="K"&gt;Kindergarten&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="1"&gt;1st Grade&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="2"&gt;2nd Grade&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="3"&gt;3rd Grade&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="4"&gt;4th Grade&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="5"&gt;5th Grade&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="generateCrossword()"&gt;Generate Crossword&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="getHint()"&gt;Get Hint&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="checkPuzzle()"&gt;Check Puzzle&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button id="printButton" onclick="printCrossword()"&gt;Print Crossword&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;textarea id="wordInput" placeholder="Enter words, one per line"&gt;&lt;/textarea&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="crosswordGrid"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let grid = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let wordPositions = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let words = [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function generateCrossword() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>words = document.getElementById('wordInput').value.split('\n').map(word =&gt; word.trim().toUpperCase());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const grade = document.getElementById('gradeSelect').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (words.length === 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alert('Please enter at least one word.');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const gridSize = Math.max(15, Math.ceil(Math.sqrt(words.length * 15)));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>grid = createEmptyGrid(gridSize);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>wordPositions = createEmptyGrid(gridSize);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>placeWords(grid, wordPositions, words, grade);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fillEmptyCells(grid);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>displayGrid(grid, false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function createEmptyGrid(size) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return Array(size).fill().map(() =&gt; Array(size).fill(''));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function placeWords(grid, wordPositions, words, grade) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const directions = getDirectionsForGrade(grade);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>words.sort((a, b) =&gt; b.length - a.length);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (const word of words) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let placed = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let attempts = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>while (!placed &amp;&amp; attempts &lt; 100) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const dir = directions[Math.floor(Math.random() * directions.length)];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const row = Math.floor(Math.random() * grid.length);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const col = Math.floor(Math.random() * grid.length);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (canPlaceWord(grid, word, row, col, dir)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>placeWord(grid, wordPositions, word, row, col, dir);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>placed = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>attempts++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function getDirectionsForGrade(grade) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const directions = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>[0, 1], <span class="Apple-converted-space">  </span>// right</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>[1, 0], <span class="Apple-converted-space">  </span>// down</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>[1, 1]<span class="Apple-converted-space">    </span>// down-right</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (grade &gt;= '3') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>directions.push([-1, 1]); // up-right</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (grade &gt;= '4') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>directions.push([0, -1], [-1, 0]); // left, up</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (grade === '5') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>directions.push([-1, -1], [1, -1]); // up-left, down-left</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return directions;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function canPlaceWord(grid, word, row, col, dir) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const [dx, dy] = dir;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; word.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const x = row + i * dx;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const y = col + i * dy;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (x &lt; 0 || x &gt;= grid.length || y &lt; 0 || y &gt;= grid.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (grid[x][y] !== '' &amp;&amp; grid[x][y] !== word[i]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>return true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function placeWord(grid, wordPositions, word, row, col, dir) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const [dx, dy] = dir;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; word.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const x = row + i * dx;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const y = col + i * dy;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid[x][y] = word[i];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>wordPositions[x][y] = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function fillEmptyCells(grid) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; grid.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>for (let j = 0; j &lt; grid.length; j++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (grid[i][j] === '') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>grid[i][j] = letters[Math.floor(Math.random() * letters.length)];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function displayGrid(grid, showAnswers) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const gridElement = document.getElementById('crosswordGrid');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>gridElement.style.gridTemplateColumns = `repeat(${grid.length}, 30px)`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>gridElement.innerHTML = '';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; grid.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>for (let j = 0; j &lt; grid.length; j++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const cell = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>cell.className = 'cell';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>cell.textContent = grid[i][j];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>cell.onclick = () =&gt; toggleHighlight(cell);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (showAnswers &amp;&amp; wordPositions[i][j]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>cell.classList.add('highlighted');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>gridElement.appendChild(cell);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function toggleHighlight(cell) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>cell.classList.toggle('highlighted');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function getHint() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const unsolvedCells = Array.from(document.querySelectorAll('.cell')).filter(</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>(cell, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const row = Math.floor(index / grid.length);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const col = index % grid.length;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return wordPositions[row][col] &amp;&amp; !cell.classList.contains('highlighted');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (unsolvedCells.length &gt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const hintCell = unsolvedCells[Math.floor(Math.random() * unsolvedCells.length)];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>hintCell.classList.add('highlighted');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alert('No more hints available!');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function checkPuzzle() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const cells = document.querySelectorAll('.cell');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>cells.forEach((cell, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const row = Math.floor(index / grid.length);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const col = index % grid.length;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (wordPositions[row][col]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (cell.classList.contains('highlighted')) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>cell.classList.remove('incorrect', 'missed');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>cell.classList.add('missed');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else if (cell.classList.contains('highlighted')) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>cell.classList.add('incorrect');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function printCrossword() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const printOption = confirm('Do you want to print the puzzle with the answer key?\nClick OK for puzzle with answer key, or Cancel for puzzle only.');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (printOption) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>displayGrid(grid, true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>displayGrid(grid, false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.print();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>displayGrid(grid, false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function sendFeedback() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.location.href = 'mailto:kyle.matthies@gmail.com?subject=Oso Grande Crossword Puzzle Generator Feedback';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
